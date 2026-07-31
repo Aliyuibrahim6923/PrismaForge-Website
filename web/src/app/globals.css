@@ -1,0 +1,386 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ *
+ * Prismaforge Design System
+ *
+ * Brand: navy blue + orange, taken from the Prismaforge logo.
+ *   · Navy is the *base* — every surface, from near-black to paper.
+ *   · Orange is the *accent* — CTAs, highlights, focus, glows.
+ * Navy is deliberately never used for glow or gradient text: against a
+ * navy background it disappears. Where the brand needs blue to read on a
+ * dark surface, `brand-sky` (navy lifted in value) is used instead.
+ *
+ * Every token is a CSS variable, so the whole site re-skins from here.
+ * ------------------------------------------------------------------ */
+
+/* next-themes writes `class="dark"` on <html>, so bind Tailwind's dark
+   variant to that class rather than the OS media query. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* -- Brand ------------------------------------------------------- */
+  --color-brand-navy: #1b2a5c; /* the logo navy */
+  --color-brand-sky: #3b62d9; /* navy lifted, for dark surfaces */
+  --color-brand-orange: #f97316; /* the logo orange */
+  --color-brand-amber: #fba94c; /* orange, lightened */
+  --color-brand-ember: #ea580c; /* orange, deepened */
+
+  /* -- Ink scale: neutral greys pulled toward the brand navy -------- */
+  --color-ink-950: #050a1a;
+  --color-ink-900: #071026;
+  --color-ink-800: #0c1836;
+  --color-ink-700: #14224a;
+  --color-ink-600: #1b2a5c;
+  --color-ink-500: #2c3e7e;
+  --color-ink-400: #64749f;
+  --color-ink-300: #96a3c4;
+  --color-ink-200: #c7d0e4;
+  --color-ink-100: #e6ebf5;
+  --color-ink-50: #f4f7fc;
+
+  /* -- Typography -------------------------------------------------- */
+  --font-display: var(--font-display), "Space Grotesk", ui-sans-serif, system-ui,
+    sans-serif;
+  --font-sans: var(--font-sans), "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", monospace;
+
+  /* -- Fluid type scale (clamp-based, no breakpoint jumps) --------- */
+  --text-display-xl: clamp(3rem, 11vw, 9.5rem);
+  --text-display-lg: clamp(2.5rem, 6.4vw, 5.25rem);
+  --text-display-md: clamp(2rem, 5vw, 3.75rem);
+  --text-display-sm: clamp(1.6rem, 3.4vw, 2.5rem);
+
+  /* -- Motion ------------------------------------------------------ */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* -- Elevation --------------------------------------------------- */
+  --shadow-glass: 0 1px 0 0 rgb(255 255 255 / 0.06) inset,
+    0 24px 60px -20px rgb(2 6 23 / 0.7);
+  --shadow-glow: 0 0 60px -12px rgb(249 115 22 / 0.55);
+
+  /* -- Animation keyframes ---------------------------------------- */
+  --animate-float: float 9s ease-in-out infinite;
+  --animate-aurora: aurora 22s ease-in-out infinite alternate;
+  --animate-shimmer: shimmer 2.4s linear infinite;
+  --animate-marquee: marquee 42s linear infinite;
+  --animate-pulse-ring: pulse-ring 2.6s var(--ease-out-expo) infinite;
+  --animate-spin-slow: spin 18s linear infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(2deg);
+  }
+}
+
+@keyframes aurora {
+  0% {
+    transform: translate3d(-6%, -4%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(6%, 4%, 0) scale(1.15);
+  }
+  100% {
+    transform: translate3d(-3%, 6%, 0) scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.8;
+  }
+  80%,
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Semantic surface tokens — flipped by the `.dark` class
+ * ------------------------------------------------------------------ */
+:root {
+  --surface: var(--color-ink-50);
+  --surface-raised: #ffffff;
+  --surface-sunken: #eaf0fe;
+  --foreground: var(--color-ink-900);
+  --muted: #4c5a80;
+  --border-subtle: rgb(27 42 92 / 0.14);
+  --glass-bg: rgb(255 255 255 / 0.74);
+  --glass-border: rgb(27 42 92 / 0.1);
+  --grid-line: rgb(27 42 92 / 0.06);
+  --selection: rgb(249 115 22 / 0.24);
+  --scrollbar-thumb: rgb(249 115 22 / 0.45);
+}
+
+.dark {
+  --surface: var(--color-ink-950);
+  --surface-raised: var(--color-ink-800);
+  --surface-sunken: #03060f;
+  --foreground: var(--color-ink-50);
+  --muted: #9aa6c9;
+  --border-subtle: rgb(255 255 255 / 0.09);
+  --glass-bg: rgb(12 24 54 / 0.6);
+  --glass-border: rgb(255 255 255 / 0.1);
+  --grid-line: rgb(255 255 255 / 0.045);
+  --selection: rgb(249 115 22 / 0.32);
+  --scrollbar-thumb: rgb(249 115 22 / 0.45);
+}
+
+/* Expose the semantic tokens as Tailwind color utilities */
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border-subtle: var(--border-subtle);
+}
+
+/* ------------------------------------------------------------------ *
+ * Base layer
+ * ------------------------------------------------------------------ */
+@layer base {
+  * {
+    border-color: var(--border-subtle);
+  }
+
+  html {
+    /* Lenis drives scrolling; native smooth-scroll would fight it. */
+    scroll-behavior: auto;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--surface);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: var(--selection);
+    color: var(--foreground);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Visible, on-brand focus ring for keyboard users only */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-orange);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Component utilities
+ * ------------------------------------------------------------------ */
+@utility container-x {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 84rem;
+  padding-inline: 1.25rem;
+  @media (width >= 48rem) {
+    padding-inline: 2.5rem;
+  }
+  @media (width >= 80rem) {
+    padding-inline: 3rem;
+  }
+}
+
+/* NOTE: sets the `background` shorthand, so pairing `glass` with a `bg-*`
+   utility silently drops the `bg-*` colour. Build the panel from parts
+   (border + bg + backdrop-blur) when you need a custom background. */
+@utility glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  box-shadow: var(--shadow-glass);
+}
+
+/* Warm ramp only — a navy stop would vanish into the dark surface. */
+@utility text-gradient {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-brand-amber) 0%,
+    var(--color-brand-orange) 45%,
+    var(--color-brand-ember) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility bg-brand {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-brand-amber),
+    var(--color-brand-orange) 50%,
+    var(--color-brand-ember)
+  );
+}
+
+/* Navy → orange, for large surfaces where both brand colours can breathe. */
+@utility bg-brand-duo {
+  background-image: linear-gradient(
+    135deg,
+    var(--color-brand-navy),
+    var(--color-brand-ember) 130%
+  );
+}
+
+/* Animated gradient border via a masked pseudo-element */
+@utility border-gradient {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      140deg,
+      rgb(249 115 22 / 0.75),
+      rgb(59 98 217 / 0.35) 40%,
+      transparent 65%
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+/* Faint technical grid used behind dark sections */
+@utility bg-grid {
+  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+@utility noise {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Scroll-reveal primitive (GSAP toggles `.is-visible`)
+ * ------------------------------------------------------------------ */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 0.9s var(--ease-out-expo),
+    transform 0.9s var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Clip-path based image reveal */
+.img-reveal {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1.1s var(--ease-in-out-quint);
+}
+.img-reveal.is-visible {
+  clip-path: inset(0 0 0 0);
+}
+
+/* Hide the native cursor only where a real pointer + custom cursor exist */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+
+/* ------------------------------------------------------------------ *
+ * Accessibility: honour reduced-motion everywhere
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .img-reveal {
+    clip-path: none;
+  }
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: auto !important;
+  }
+}

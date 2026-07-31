@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" width="320" height="64" role="img" aria-label="Prismaforge">
+  <title>Prismaforge</title>
+  <!-- Reversed lockup, for navy/dark backgrounds. The letterform goes to
+       paper white because brand navy is unreadable on a navy surface. -->
+  <g fill="#f4f7fc">
+    <rect x="12" y="8" width="10" height="48"/>
+    <path fill-rule="evenodd" d="M22 8 H36 A14 14 0 0 1 36 36 H22 Z M22 15 H36 A7 7 0 0 1 36 29 H22 Z"/>
+  </g>
+  <path fill="#f97316" d="M26.5 16 L40 22 L26.5 28 Z"/>
+  <text x="72" y="43" font-family="'Space Grotesk','Inter',ui-sans-serif,system-ui,sans-serif" font-size="30" font-weight="700" letter-spacing="-0.6">
+    <tspan fill="#f4f7fc">Prisma</tspan><tspan fill="#f97316">forge</tspan>
+  </text>
+</svg>

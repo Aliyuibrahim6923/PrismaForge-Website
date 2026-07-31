@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 650" width="1180" height="650" role="img" aria-label="Prismaforge platform logos">
+  <title>Prismaforge platform logos</title>
+  <rect width="1180" height="650" fill="#f4f7fc"/>
+  <text x="40" y="74" font-family="'Space Grotesk',Inter,system-ui,sans-serif" font-size="34" font-weight="700" fill="#1b2a5c">Prismaforge <tspan fill="#f97316">platform logos</tspan></text>
+  <text x="40" y="102" font-family="Inter,system-ui,sans-serif" font-size="14" fill="#4c5a80">One logo per product. Navy carries the structure; a single orange element carries what moves.</text>
+  <line x1="40" y1="124" x2="1140" y2="124" stroke="#1b2a5c" stroke-opacity="0.14"/>
+  <g transform="translate(95.0 150) scale(1.7188)">
+  <path d="M6 15 L29 10 V51 L6 56 Z" fill="#1b2a5c"/>
+  <path d="M58 15 L35 10 V51 L58 56 Z" fill="#1b2a5c"/>
+  <path d="M28 6 H36 V34 L32 29 L28 34 Z" fill="#f97316"/>
+  </g>
+  <text x="150" y="292" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="600" fill="#1b2a5c">Learning Management System</text>
+  <text x="150" y="310" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,monospace" font-size="11" fill="#64749f">/brand/lms.svg</text>
+  <g transform="translate(315.0 150) scale(1.7188)">
+  <path d="M8 17 a6 6 0 1 0 12 0 a6 6 0 1 0 -12 0 Z" fill="#f97316"/>
+  <rect x="26" y="13" width="32" height="8" rx="4" fill="#1b2a5c"/>
+  <path d="M8 32 a6 6 0 1 0 12 0 a6 6 0 1 0 -12 0 Z" fill="#1b2a5c"/>
+  <rect x="26" y="28" width="32" height="8" rx="4" fill="#1b2a5c"/>
+  <path d="M8 47 a6 6 0 1 0 12 0 a6 6 0 1 0 -12 0 Z" fill="#1b2a5c"/>
+  <rect x="26" y="43" width="32" height="8" rx="4" fill="#1b2a5c"/>
+  </g>
+  <text x="370" y="292" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="600" fill="#1b2a5c">Student Management System</text>
+  <text x="370" y="310" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,monospace" font-size="11" fill="#64749f">/brand/sms.svg</text>
+  <g transform="translate(535.0 150) scale(1.7188)">
+  <rect x="8" y="8" width="21" height="21" rx="5" fill="#1b2a5c"/>
+  <rect x="35" y="8" width="21" height="21" rx="5" fill="#1b2a5c"/>
+  <rect x="8" y="35" width="21" height="21" rx="5" fill="#1b2a5c"/>
+  <rect x="35" y="35" width="21" height="21" rx="5" fill="#f97316"/>
+  </g>
+  <text x="590" y="292" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="600" fill="#1b2a5c">E-TRACK E-Governance Suite</text>
+  <text x="590" y="310" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,monospace" font-size="11" fill="#64749f">/brand/etrack.svg</text>
+  <g transform="translate(755.0 150) scale(1.7188)">
+  <rect x="6" y="6" width="24" height="25" rx="3" fill="#1b2a5c"/>
+  <rect x="34" y="6" width="24" height="16" rx="3" fill="#1b2a5c"/>
+  <rect x="34" y="26" width="24" height="15" rx="3" fill="#f97316"/>
+  <rect x="6" y="35" width="24" height="23" rx="3" fill="#1b2a5c"/>
+  <rect x="34" y="45" width="24" height="13" rx="3" fill="#1b2a5c"/>
+  </g>
+  <text x="810" y="292" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="600" fill="#1b2a5c">Land Administration System</text>
+  <text x="810" y="310" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,monospace" font-size="11" fill="#64749f">/brand/land.svg</text>
+  <g transform="translate(975.0 150) scale(1.7188)">
+  <rect x="6" y="9" width="15" height="46" rx="4" fill="#1b2a5c"/>
+  <rect x="24.5" y="9" width="15" height="46" rx="4" fill="#1b2a5c"/>
+  <rect x="43" y="9" width="15" height="46" rx="4" fill="#1b2a5c"/>
+  <rect x="27.5" y="15" width="9" height="13" rx="2.5" fill="#f97316"/>
+  </g>
+  <text x="1030" y="292" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="600" fill="#1b2a5c">Project Management &amp; ERP</text>
+  <text x="1030" y="310" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,monospace" font-size="11" fill="#64749f">/brand/erp.svg</text>
+  <g transform="translate(95.0 380) scale(1.7188)">
+  <rect x="5" y="18" width="35" height="28" rx="7" fill="#1b2a5c"/>
+  <path d="M45 32 L59 21 V43 Z" fill="#f97316"/>
+  </g>
+  <text x="150" y="522" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="600" fill="#1b2a5c">Virtual Meeting Application</text>
+  <text x="150" y="540" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,monospace" font-size="11" fill="#64749f">/brand/meet.svg</text>
+  <g transform="translate(315.0 380) scale(1.7188)">
+  <path d="M9 32 a23 23 0 1 0 46 0 a23 23 0 1 0 -46 0 Z M17 32 a15 15 0 1 0 30 0 a15 15 0 1 0 -30 0 Z" fill-rule="evenodd" fill="#1b2a5c"/>
+  <rect x="6" y="28" width="52" height="8" rx="4" fill="#f97316"/>
+  </g>
+  <text x="370" y="522" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="600" fill="#1b2a5c">Distance Learning Platform</text>
+  <text x="370" y="540" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,monospace" font-size="11" fill="#64749f">/brand/distance.svg</text>
+  <g transform="translate(535.0 380) scale(1.7188)">
+  <path d="M32 5 L55 14 V32 C55 45.5 44.5 55 32 59 C19.5 55 9 45.5 9 32 V14 Z" fill="#1b2a5c"/>
+  <path d="M32 19 L44 41 H20 Z" fill="#f97316"/>
+  </g>
+  <text x="590" y="522" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="600" fill="#1b2a5c">Security Intelligence Software</text>
+  <text x="590" y="540" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,monospace" font-size="11" fill="#64749f">/brand/security.svg</text>
+  <g transform="translate(755.0 380) scale(1.7188)">
+  <path d="M6 25 H21 L40 12 V52 L21 39 H6 Z" fill="#1b2a5c"/>
+  <rect x="46" y="22" width="5" height="20" rx="2.5" fill="#f97316"/>
+  <rect x="55" y="27" width="5" height="10" rx="2.5" fill="#f97316"/>
+  </g>
+  <text x="810" y="522" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="600" fill="#1b2a5c">Business &amp; Digital Presence</text>
+  <text x="810" y="540" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,monospace" font-size="11" fill="#64749f">/brand/brand.svg</text>
+  <g transform="translate(975.0 380) scale(1.7188)">
+  <path d="M32 9 L60 21 L32 33 L4 21 Z" fill="#1b2a5c"/>
+  <path d="M15 26 V41 C15 41 22 49 32 49 C42 49 49 41 49 41 V26 L32 33 Z" fill="#1b2a5c"/>
+  <rect x="54.5" y="23" width="3" height="15" rx="1.5" fill="#f97316"/>
+  <path d="M52.5 41 a3.5 3.5 0 1 0 7 0 a3.5 3.5 0 1 0 -7 0 Z" fill="#f97316"/>
+  </g>
+  <text x="1030" y="522" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="600" fill="#1b2a5c">Prismaforge Academy</text>
+  <text x="1030" y="540" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,monospace" font-size="11" fill="#64749f">/brand/academy.svg</text>
+</svg>
