@@ -1,5 +1,9 @@
 import { cn } from "@/lib/utils";
-import { productMarks, type ProductMarkName } from "@/lib/brand/product-marks";
+import {
+  paintAttrs,
+  productMarks,
+  type ProductMarkName,
+} from "@/lib/brand/product-marks";
 
 interface ProductMarkProps {
   name: ProductMarkName;
@@ -44,26 +48,58 @@ export function ProductMark({
       {labelled && <title>{mark.name}</title>}
 
       {mark.shapes.map((shape, index) => {
-        const fill = shape.tone === "accent" ? accentColor : letterColor;
+        const colour = shape.tone === "accent" ? accentColor : letterColor;
+        const paint = paintAttrs(shape, colour);
+        const transform = shape.transform;
 
-        return shape.kind === "rect" ? (
-          <rect
-            key={index}
-            x={shape.x}
-            y={shape.y}
-            width={shape.w}
-            height={shape.h}
-            rx={shape.r}
-            fill={fill}
-          />
-        ) : (
-          <path
-            key={index}
-            d={shape.d}
-            fill={fill}
-            fillRule={shape.evenodd ? "evenodd" : undefined}
-          />
-        );
+        switch (shape.kind) {
+          case "rect":
+            return (
+              <rect
+                key={index}
+                x={shape.x}
+                y={shape.y}
+                width={shape.w}
+                height={shape.h}
+                rx={shape.r}
+                transform={transform}
+                {...paint}
+              />
+            );
+          case "circle":
+            return (
+              <circle
+                key={index}
+                cx={shape.cx}
+                cy={shape.cy}
+                r={shape.r}
+                transform={transform}
+                {...paint}
+              />
+            );
+          case "ellipse":
+            return (
+              <ellipse
+                key={index}
+                cx={shape.cx}
+                cy={shape.cy}
+                rx={shape.rx}
+                ry={shape.ry}
+                transform={transform}
+                {...paint}
+              />
+            );
+          default:
+            return (
+              <path
+                key={index}
+                d={shape.d}
+                fillRule={shape.evenodd ? "evenodd" : undefined}
+                transform={transform}
+                {...paint}
+              />
+            );
+        }
       })}
     </svg>
   );
