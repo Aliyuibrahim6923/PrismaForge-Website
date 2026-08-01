@@ -78,6 +78,32 @@ directly below the hero. To promote a different product:
 Tab changes and CTA clicks fire `spotlight_select` / `spotlight_cta`
 analytics events, so you can see which product actually earns attention.
 
+### Project cover artwork
+
+Each project card and detail hero draws an **illustrated scene of that
+product's own interface** — a course player for the LMS, a roster for the
+SMS, a finance dashboard for E-TRACK, a cadastral sheet for Land
+Administration, and so on. They live in
+`src/components/ui/ProductScene.tsx`.
+
+They are vector rather than photographic on purpose: ~1 kB each against
+~100 kB per photo, crisp at any density with no `srcset` or image CDN, and
+they recolour with the brand instead of needing re-rendering. Nine hero
+photographs would undo most of the performance work above.
+
+**To use real photography or generated imagery instead**, drop the file in
+`public/work/` and add one line to the project in `content/projects.ts`:
+
+```ts
+image: "/work/learning-management-system.webp",
+```
+
+That is the only change needed. `ProjectCover` switches to `next/image`
+automatically, with sizing, lazy loading and AVIF/WebP conversion handled.
+Aim for 3:2 or wider at ~1600px; the card crops to 4:3 and the detail hero
+to 21:9. Keep the lower-left corner uncluttered — the product logo chip
+sits there.
+
 ### ⚠️ Placeholder content to replace before launch
 
 The catalog doesn't cover these, so they are structural placeholders —

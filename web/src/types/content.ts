@@ -62,6 +62,12 @@ export interface Project {
   icon: IconName;
   /** The platform's own logo — see `lib/brand/product-marks.ts`. */
   mark: ProductMarkName;
+  /**
+   * Real cover artwork in /public, e.g. "/work/lms.webp". Optional: when
+   * absent the cover draws the illustrated product scene instead. Set this
+   * to drop in screenshots or generated imagery with no code change.
+   */
+  image?: string;
   tags: string[];
   challenge: string;
   solution: string;

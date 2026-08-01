@@ -1,5 +1,7 @@
+import Image from "next/image";
 import { Icon, type IconName } from "./Icon";
 import { ProductMark } from "@/components/brand/ProductMark";
+import { ProductScene } from "./ProductScene";
 import type { ProductMarkName } from "@/lib/brand/product-marks";
 import { cn } from "@/lib/utils";
 
@@ -8,6 +10,11 @@ interface ProjectCoverProps {
   icon: IconName;
   /** The platform's own logo. Falls back to `icon` when absent. */
   mark?: ProductMarkName;
+  /**
+   * Real cover artwork — a screenshot or generated image in /public.
+   * When set it replaces the illustrated scene entirely.
+   */
+  image?: string;
   title: string;
   className?: string;
   /** Larger treatment for the project detail hero. */
@@ -15,22 +22,28 @@ interface ProjectCoverProps {
 }
 
 /**
- * Generated cover art for a project.
+ * Cover art for a project.
  *
- * Deliberately not a photograph: the artwork is derived from the project's
- * own gradient and icon, so the portfolio stays visually coherent, weighs
- * nothing, scales to any density, and needs no asset pipeline. Swap this
- * for `next/image` once real screenshots are cleared for publication.
+ * By default this draws an illustrated scene of the product's own
+ * interface (see `ProductScene`) over the project's brand gradient —
+ * vector, ~1 kB, crisp at any density and themeable, which is why it is
+ * preferred to a photograph on a page that has been tuned for speed.
+ *
+ * To use real artwork instead, add `image: "/work/<file>.webp"` to the
+ * project in `content/projects.ts`. It takes over automatically here, with
+ * `next/image` handling sizing, lazy loading and AVIF/WebP conversion.
  */
 export function ProjectCover({
   gradient,
   icon,
   mark,
+  image,
   title,
   className,
   size = "card",
 }: ProjectCoverProps) {
   const [from, to] = gradient;
+  const isHero = size === "hero";
 
   return (
     <div
@@ -38,69 +51,70 @@ export function ProjectCover({
       aria-label={`${title} — cover artwork`}
       className={cn(
         "relative isolate overflow-hidden",
-        size === "card" ? "aspect-4/3" : "aspect-21/9",
+        isHero ? "aspect-21/9" : "aspect-4/3",
         className,
       )}
-      style={{
-        backgroundImage: `linear-gradient(135deg, ${from}, ${to})`,
-      }}
+      style={{ backgroundImage: `linear-gradient(135deg, ${from}, ${to})` }}
     >
-      {/* Concentric rings — the "refraction" motif */}
-      <svg
-        aria-hidden
-        className="absolute inset-0 size-full opacity-40 mix-blend-soft-light"
-        viewBox="0 0 400 300"
-        // Anchor to the top-right so the refraction rings stay in frame on
-        // the wide 21:9 hero crop as well as the 4:3 card crop.
-        preserveAspectRatio="xMaxYMin slice"
-      >
-        <defs>
-          <radialGradient id={`glow-${title.replace(/\W/g, "")}`}>
-            <stop offset="0%" stopColor="#fff" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#fff" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-        {[40, 78, 116, 154, 192].map((radius) => (
-          <circle
-            key={radius}
-            cx="310"
-            cy="60"
-            r={radius}
-            fill="none"
-            stroke="#fff"
-            strokeOpacity="0.28"
-            strokeWidth="1"
-          />
-        ))}
-        <circle
-          cx="90"
-          cy="240"
-          r="140"
-          fill={`url(#glow-${title.replace(/\W/g, "")})`}
+      {image ? (
+        <Image
+          src={image}
+          alt=""
+          fill
+          // Card is a third of the grid on desktop; hero is full width.
+          sizes={isHero ? "100vw" : "(min-width: 1024px) 33vw, 100vw"}
+          className="object-cover"
+          priority={isHero}
         />
-      </svg>
+      ) : (
+        <svg
+          aria-hidden
+          className="absolute inset-0 size-full"
+          viewBox="0 0 400 300"
+          preserveAspectRatio="xMidYMid slice"
+        >
+          {/* Refraction rings — the brand motif, behind the scene. */}
+          <g opacity="0.35">
+            {[54, 104, 154, 204].map((radius) => (
+              <circle
+                key={radius}
+                cx="336"
+                cy="34"
+                r={radius}
+                fill="none"
+                stroke="#fff"
+                strokeOpacity="0.22"
+                strokeWidth="1"
+              />
+            ))}
+          </g>
+          {mark && <ProductScene mark={mark} />}
+        </svg>
+      )}
 
-      {/* Dark scrim so the icon and any overlaid text stay legible */}
-      <div className="absolute inset-0 bg-gradient-to-t from-ink-950/75 via-ink-950/10 to-transparent" />
+      {/* Scrim so the logo chip and any overlaid text stay legible. */}
+      <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-ink-950/5 to-transparent" />
 
-      {/* The platform's own logo on a glass chip. Rendered monochrome here
-          on purpose: several covers end on brand orange, and a full-colour
-          accent would sink into its own background. The two-tone logo is
-          for solid surfaces — see /brand. */}
+      {/* The platform's own logo, on a solid white chip.
+          Not translucent glass: these marks are fine outlines, and a white
+          mark on a white-tinted panel over a bright gradient disappears.
+          A solid chip also lets the real two-tone logo show — the colours
+          are hard-coded because the chip is white in either theme. */}
       <span
         className={cn(
-          "absolute bottom-4 left-4 grid place-items-center rounded-2xl border border-white/25 bg-white/12 text-white backdrop-blur-md",
-          size === "hero" ? "size-14" : "size-11",
+          "absolute bottom-4 left-4 grid place-items-center rounded-2xl bg-white shadow-[0_8px_20px_-8px_rgb(5_10_26/0.65)] ring-1 ring-ink-950/10",
+          isHero ? "size-16" : "size-12",
         )}
       >
         {mark ? (
           <ProductMark
             name={mark}
-            size={size === "hero" ? 30 : 24}
-            accentColor="#ffffff"
+            size={isHero ? 40 : 30}
+            letterColor="#1b2a5c"
+            accentColor="#f97316"
           />
         ) : (
-          <Icon name={icon} size={20} />
+          <Icon name={icon} size={22} className="text-[#1b2a5c]" />
         )}
       </span>
     </div>

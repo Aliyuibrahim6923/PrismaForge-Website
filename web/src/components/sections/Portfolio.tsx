@@ -107,6 +107,7 @@ export function Portfolio() {
                       gradient={project.gradient}
                       icon={project.icon}
                       mark={project.mark}
+                      image={project.image}
                       title={project.title}
                       className="transition-transform duration-700 [transition-timing-function:var(--ease-out-expo)] group-hover:scale-105"
                     />

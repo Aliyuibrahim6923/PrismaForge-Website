@@ -130,6 +130,7 @@ export default async function ProjectPage({ params }: PageProps) {
           gradient={project.gradient}
           icon={project.icon}
           mark={project.mark}
+          image={project.image}
           title={project.title}
           className="img-reveal mt-14 rounded-3xl"
         />
@@ -238,6 +239,7 @@ export default async function ProjectPage({ params }: PageProps) {
                     gradient={item.gradient}
                     icon={item.icon}
                     mark={item.mark}
+                    image={item.image}
                     title={item.title}
                     className="w-28 shrink-0 rounded-2xl"
                   />

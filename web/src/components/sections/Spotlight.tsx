@@ -205,6 +205,7 @@ export function Spotlight() {
                 gradient={project.gradient}
                 icon={project.icon}
                 mark={project.mark}
+                image={project.image}
                 title={project.title}
                 className="rounded-3xl shadow-[0_30px_70px_-30px_rgba(5,10,26,0.9)]"
               />
