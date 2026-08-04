@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Prismaforge">
+  <title>Prismaforge</title>
+  <!-- Mark only. Use where the wordmark would be redundant or too small:
+       avatars, app tiles, favicons, stamps on documents. -->
+  <g fill="#1b2a5c">
+    <rect x="12" y="8" width="10" height="48"/>
+    <path fill-rule="evenodd" d="M22 8 H36 A14 14 0 0 1 36 36 H22 Z M22 15 H36 A7 7 0 0 1 36 29 H22 Z"/>
+  </g>
+  <path fill="#f97316" d="M26.5 16 L40 22 L26.5 28 Z"/>
+</svg>

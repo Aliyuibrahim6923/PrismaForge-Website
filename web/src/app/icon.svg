@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Favicon: Next.js serves any src/app/icon.svg automatically.
+       Solid navy tile so the mark holds up against both light and dark
+       browser chrome, where a transparent navy mark would vanish. -->
+  <rect width="64" height="64" rx="14" fill="#0c1836"/>
+  <g transform="translate(4 4) scale(0.875)" fill="#f4f7fc">
+    <rect x="12" y="8" width="10" height="48"/>
+    <path fill-rule="evenodd" d="M22 8 H36 A14 14 0 0 1 36 36 H22 Z M22 15 H36 A7 7 0 0 1 36 29 H22 Z"/>
+  </g>
+  <path transform="translate(4 4) scale(0.875)" fill="#f97316" d="M26.5 16 L40 22 L26.5 28 Z"/>
+</svg>
