@@ -92,6 +92,7 @@ export const footerLinks = [
       { label: "Team", href: "#team" },
       { label: "Insights", href: "#news" },
       { label: "Contact", href: "#contact" },
+      { label: "Free QR & vCard tools", href: "/tools" },
     ],
   },
   {
