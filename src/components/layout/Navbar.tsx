@@ -123,6 +123,19 @@ export function Navbar() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link
+                href="/tools"
+                className={cn(
+                  "relative rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300",
+                  pathname.startsWith("/tools")
+                    ? "bg-foreground/8 text-foreground"
+                    : "text-muted hover:text-foreground",
+                )}
+              >
+                Free tools
+              </Link>
+            </li>
           </ul>
 
           <div className="flex items-center gap-2">
@@ -162,9 +175,9 @@ export function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
-            className="fixed inset-0 z-40 bg-surface/95 backdrop-blur-2xl lg:hidden"
+            className="fixed inset-0 z-40 overflow-y-auto bg-surface/95 backdrop-blur-2xl lg:hidden"
           >
-            <div className="container-x flex h-full flex-col justify-center gap-2 pt-20">
+            <div className="container-x flex min-h-full flex-col justify-center gap-2 pb-8 pt-24">
               {navLinks.map((link, index) => (
                 <motion.div
                   key={link.href}
@@ -189,6 +202,24 @@ export function Navbar() {
                   </Link>
                 </motion.div>
               ))}
+
+              <motion.div
+                initial={{ opacity: 0, y: 28 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 12 }}
+                transition={{ delay: 0.06 * navLinks.length, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <Link
+                  href="/tools"
+                  onClick={() => setOpen(false)}
+                  className="flex items-baseline gap-4 border-b border-border-subtle py-4 font-display text-3xl font-semibold tracking-tight transition-colors hover:text-brand-orange"
+                >
+                  <span className="font-mono text-xs text-muted">
+                    0{navLinks.length + 1}
+                  </span>
+                  Free tools
+                </Link>
+              </motion.div>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
