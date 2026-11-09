@@ -11,7 +11,7 @@ interface CounterProps {
   suffix?: string;
   duration?: number;
   className?: string;
-  /** Years must not be formatted with thousands separators. */
+  /** `plain`: a year — rendered as-is, no separators and no count-up. */
   format?: "number" | "plain";
 }
 
@@ -33,9 +33,16 @@ export function Counter({
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-15% 0px" });
   const prefersReducedMotion = usePrefersReducedMotion();
-  const [display, setDisplay] = useState(0);
+  // Years are facts, not tallies: counting 0 → 2026 shows a wrong year
+  // ("2014") mid-animation and "0" before hydration on slow phones.
+  const isStatic = format === "plain";
+  const [display, setDisplay] = useState(isStatic ? value : 0);
 
   useEffect(() => {
+    if (isStatic) {
+      setDisplay(value);
+      return;
+    }
     if (!inView) return;
 
     if (prefersReducedMotion) {
@@ -50,7 +57,7 @@ export function Counter({
     });
 
     return () => controls.stop();
-  }, [inView, value, duration, prefersReducedMotion]);
+  }, [inView, value, duration, prefersReducedMotion, isStatic]);
 
   const formatted =
     format === "plain" ? String(display) : display.toLocaleString("en-US");

@@ -57,7 +57,12 @@ export function Preloader() {
       {visible && (
         <motion.div
           key="preloader"
-          className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-ink-950"
+          // `hidden md:flex` / `motion-reduce:hidden`: this markup is
+          // server-rendered, so the JS check below only runs after
+          // hydration. Without these, phones sat behind "Loading 0%"
+          // until every script had downloaded. `preloader-failsafe`
+          // clears the curtain even if JavaScript never runs.
+          className="preloader-failsafe fixed inset-0 z-[200] hidden flex-col items-center justify-center bg-ink-950 motion-reduce:hidden md:flex"
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: [0.83, 0, 0.17, 1] }}
         >

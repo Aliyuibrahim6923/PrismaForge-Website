@@ -354,6 +354,19 @@
   clip-path: inset(0 0 0 0);
 }
 
+/* Server-rendered loading curtain: if hydration stalls (slow network, a
+   blocked script), remove it anyway so the page is never stuck behind it. */
+@keyframes preloader-failsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+.preloader-failsafe {
+  animation: preloader-failsafe 0.5s ease 5s forwards;
+}
+
 /* Hide the native cursor only where a real pointer + custom cursor exist */
 html.has-custom-cursor,
 html.has-custom-cursor * {
